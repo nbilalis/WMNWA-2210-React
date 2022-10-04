@@ -1,0 +1,14 @@
+{
+  "translation": {
+    "titles": {
+      "home": "Αρχική Σελίδα",
+      "about": "Περί..."
+    },
+    "welcome": "Καλωσήλθατε στην εφαρμογή React!",
+    "counter": "Μετρητής",
+    "clickMe": "Κάντε κλικ εδώ",
+    "price": "Τιμή: {{ val, currency(EUR) }}",
+    "date": "Ημερομηνία: {{ val, datetime }}",
+    "starting-point": "Αυτό είναι ένα σημείο εκκίνησης, για να ξεκινήσετε με τη React."
+  }
+}

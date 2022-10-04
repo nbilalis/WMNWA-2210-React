@@ -1,0 +1,14 @@
+{
+  "translation": {
+    "titles": {
+      "home": "Home",
+      "about": "About"
+    },
+    "welcome": "Welcome to your React app!",
+    "counter": "Counter",
+    "clickMe": "Click me",
+    "price": "Price: {{ val, currency(USD) }}",
+    "date": "Date: {{ val, datetime }}",
+    "starting-point": "This is an opinionated starting point, to get you going with React."
+  }
+}

@@ -1,0 +1,46 @@
+.card {
+  position: relative;
+  height: 100%;
+  border-radius: 0.5em;
+  box-shadow: 0 4px 8px 0 #dcdcdc;
+  padding: 0.5em 0.5em 1.25em 0.5em;
+  transition: all 0.25s;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 5px -3px rgb(0 0 0 / 20%), 0 8px 10px 1px rgb(0 0 0 / 14%),
+      0 3px 14px 2px rgb(0 0 0 / 12%);
+  }
+
+  &:hover {
+    .action {
+      opacity: 1;
+    }
+  }
+}
+
+.title {
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 0.25em;
+}
+
+.rating {
+  position: absolute;
+  font-size: 0.8em;
+  bottom: 0.5em;
+  right: 0.5em;
+}
+
+.action {
+  opacity: 0;
+  font-size: 1.25em;
+  cursor: pointer;
+  border: none;
+  background: none;
+  position: absolute;
+  top: 0.5em;
+  right: 0.25em;
+  transition: all 0.75s;
+}

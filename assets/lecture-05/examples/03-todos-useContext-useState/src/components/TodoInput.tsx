@@ -1,0 +1,33 @@
+import { useState, KeyboardEvent } from 'react';
+import { useTodos } from '../store/TodosProvider';
+
+function TodoInput() {
+  const [text, setText] = useState('');
+
+  const { addTodo } = useTodos();
+
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    // If the "Enter" key was pressed and there is a value
+    if (e.key === 'Enter' && text.length) {
+      // Add a new Todo item
+      addTodo(text);
+      // Clear the value of the input element
+      setText('');
+    }
+  };
+
+  return (
+    <input
+      type="text"
+      value={text}
+      onChange={(e) => {
+        setText(e.currentTarget.value.trim());
+      }}
+      onKeyPress={handleKeyPress}
+      title="Enter Todo text here"
+      placeholder="Enter Todo text here"
+    />
+  );
+}
+
+export default TodoInput;

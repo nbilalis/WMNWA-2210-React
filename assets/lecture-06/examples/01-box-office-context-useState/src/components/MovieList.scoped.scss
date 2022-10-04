@@ -1,0 +1,11 @@
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+
+  li {
+    display: inline-block;
+    flex-basis: 0;
+    flex-grow: 0;
+  }
+}

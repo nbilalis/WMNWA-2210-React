@@ -1,0 +1,31 @@
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: center;
+  gap: 1em;
+}
+
+li {
+  width: 11em;
+  background-color: var(--accent-color);
+  padding: 0.75em;
+  border-radius: 0.75em;
+}
+
+img {
+  width: 10em;
+}
+
+a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  color: var(--main-background-color);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

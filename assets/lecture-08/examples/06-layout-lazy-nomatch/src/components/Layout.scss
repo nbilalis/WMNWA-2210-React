@@ -1,0 +1,54 @@
+:root {
+  --main-color: #61dafb;
+  --accent-color: whitesmoke;
+  --main-background-color: #282c34;
+}
+
+body {
+  color: var(--accent-color);
+  background-color: var(--main-background-color);
+}
+
+#root {
+  display: grid;
+  height: 100vh;
+
+  grid-template:
+    'h h' 1fr
+    'm  a' 100fr
+    'f f ' 5em
+    / 4fr 1fr;
+}
+
+header {
+  grid-area: h;
+
+  padding: 1.5em;
+  background-color: darken($color: #282c34, $amount: 5%);
+}
+
+main {
+  grid-area: m;
+
+  padding: 1em;
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
+aside {
+  grid-area: a;
+
+  padding: 1em;
+  background-color: darken($color: #282c34, $amount: 2.5%);
+}
+
+footer {
+  grid-area: f;
+
+  background-color: darken($color: #282c34, $amount: 5%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

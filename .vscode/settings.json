@@ -1,0 +1,25 @@
+{
+	// "window.zoomLevel": 1,
+
+	"editor.fontFamily": "Cascadia Code",
+
+	"editor.tabSize": 4,
+	"editor.insertSpaces": true,
+
+	"compile-hero.scss-output-directory": ".",
+	"compile-hero.generate-minified-css": true,
+	"compile-hero.ignore": "**/*.js",
+
+	"markdownlint.config": {
+		"MD001": false,
+		"MD003": false,
+		"MD024": false,
+		"MD026": false,
+		"MD041": false,
+		"MD045": false, // Images should have alternative text
+	},
+
+	"search.exclude": {
+		"**/.git": true,
+	},
+}

@@ -1,0 +1,20 @@
+.filters {
+  padding: 0.5em;
+
+  button {
+    margin-right: 0.5em;
+
+    &.active {
+      color: $accent-color;
+      background-color: $background-color;
+    }
+  }
+}
+
+li {
+  margin-top: 1em;
+}
+
+a {
+  color: $accent-color;
+}

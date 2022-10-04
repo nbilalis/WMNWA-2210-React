@@ -1,0 +1,14 @@
+$color-accent: #61dafb;
+
+:root {
+  --color-primary: whitesmoke;
+  --color-accent: #{$color-accent};
+  --color-accent-dark: #{darken($color-accent, 50%)};
+  --color-background: #282c34;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  text-align: center;
+}
