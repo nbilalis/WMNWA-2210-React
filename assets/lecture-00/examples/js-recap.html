@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const a = 2020;
+    let b = 2;
+
+    // Template literals
+    const c = `SAE ${a + b}`;
+
+    // Function Declarations
+    function d() {
+      return `SAE ${a + b}`;
+    }
+
+    const e = function () {
+      return `SAE ${a + b}`;
+    }
+
+    const f1 = () => { return `SAE ${a + b}` };
+
+    const f2 = () => `SAE ${a + b}`;    // Implicit return
+    const f3 = () => {`SAE ${a + b}`};  // No return
+
+    console.log(f2());
+    console.log(f3());
+
+    // Array Destructuring
+
+    const arr = [1, 4, 6, 7];
+    const x1 = arr[0];
+    const x2 = arr[1];
+
+    // const [x1, x2] = arr;
+    const [,, x3, x4] = arr;
+
+    console.log(x1, x2, x3, x4);
+
+    const a1 = [1, 6, 8];
+    const a2 = [2, 5, 7];
+
+    // Spread operator - arrays
+
+    const a3 = [...a1, ...a2];
+    const a4 = [...a3, 3];
+    console.log(a3);
+    console.log(a4);
+
+    const [x5, ...a5] = [1, 4, 6, 7];
+    console.log({x5, a5});
+
+    // Rest operator
+
+    function frest(first, ...rest) {
+      console.log({first, rest});
+    }
+
+    frest(1, 2, 3, 4, 5);
+
+    // Object Destructuring
+
+    const obj = {
+      p1: 1,
+      p2: 2,
+      p3: 3,
+      p5: {a: 5, b: 6},
+    };
+
+    const {p1, p2, p3, p4 = 0, p5: o5 } = obj;
+    console.log({p1, p2, p3, p4, o5});
+
+    // Spread operator - objects
+
+    const person = { name: 'Nikos', lastname: 'Billalis' };
+    const edited = { ...person, lastname: 'Bilalis', tel: '210999999' };
+    console.log({person, edited});
+
+    const movie = {
+      title: 'The Matrix',
+      year: 1999,
+      director: 'Wachowski',
+      actors: ['Keanu Reeves', 'Laurence Fishburne', 'Carrie-Anne Moss'],
+    };
+
+    const rateMovie = (movie, rating) => ({...movie,  rating});
+    // const rateMovie = (movie, rating) => { return {...movie,  rating}; };
+
+    // Higher order functions
+
+    const squares = [1, 4, 6, 8].map(x => x * x);
+    console.log(squares);
+
+    const el = ['apple', 'banana', 'pear', 'kiwi'].map(f => `<li>${f}</li>`);
+    console.log(el);
+
+    const odds = [4, 7, 8, 9, 13].filter(x => x % 2 === 1);
+    console.log({odds});
+
+    const sum = [4, 7, 8, 9, 13, 17].reduce((acc, cur) => acc + cur, 0);
+    const max = [7, 4, 17, 13, 9, 8].reduce((acc, cur) => cur > acc ? cur : acc, -1);
+    console.log({sum, max});
+
+    const some = [5, 7, 3, -1].some(x => x < 0);
+    const every = [5, 7, 3, -1].every(x => x > 0);
+    console.log({some, every});
+</script>
+</body>
+</html>
