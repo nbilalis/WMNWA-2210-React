@@ -158,28 +158,39 @@
   color: gray;
 }
 .remark-slide .cover {
-  border: 10px solid #743bbc;
-  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("../img/cover-bg.png");
+  background: url("../img/cover-bg.jpg");
   background-position: center top;
   background-size: cover;
   vertical-align: middle;
   text-align: center;
 }
+.remark-slide .cover h1, .remark-slide .cover h2, .remark-slide .cover h3 {
+  position: absolute;
+}
+.remark-slide .cover h1 {
+  top: 30px;
+  font-size: 28pt;
+}
 .remark-slide .cover h2 {
-  color: gray;
+  top: 80px;
+  font-size: 22pt;
+  font-weight: normal;
+  text-transform: uppercase;
 }
 .remark-slide .cover h3 {
+  top: 130px;
   color: #743bbc;
-  font-size: 36pt;
+  font-size: 28pt;
 }
 .remark-slide .cover .logo-sae {
-  top: 50px;
-  left: 50px;
+  top: initial;
+  right: 60px;
+  bottom: 40px;
+  left: initial;
 }
 .remark-slide .cover .logo-web {
-  top: initial;
-  bottom: 30px;
-  right: 35px;
+  top: 40px;
+  right: 60px;
 }
 .remark-slide .cover .logo-web img {
   height: 80px;

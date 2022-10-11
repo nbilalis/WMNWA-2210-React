@@ -206,35 +206,44 @@ $accent-color: #743bbc;
   $bg-opacity: 0.75;
 
   .cover {
-    border: 10px solid $accent-color;
-    background: linear-gradient(
-        rgba(0, 0, 0, $bg-opacity),
-        rgba(0, 0, 0, $bg-opacity)
-      ),
-      url("../img/cover-bg.png");
+    background: url("../img/cover-bg.jpg");
     background-position: center top;
     background-size: cover;
     vertical-align: middle;
     text-align: center;
 
+    h1, h2, h3 {
+      position: absolute;
+    }
+
+    h1 {
+      top: 30px;
+      font-size: 28pt;
+    }
+
     h2 {
-      color: gray;
+      top: 80px;
+      font-size: 22pt;
+      font-weight: normal;
+      text-transform: uppercase;
     }
 
     h3 {
+      top: 130px;
       color: $accent-color;
-      font-size: 36pt; // 28pt;
+      font-size: 28pt;
     }
 
     .logo-sae {
-      top: 50px;
-      left: 50px;
+      top: initial;
+      right: 60px;
+      bottom: 40px;
+      left: initial;
     }
 
     .logo-web {
-      top: initial;
-      bottom: 30px;
-      right: 35px;
+      top: 40px;
+      right: 60px;
 
       img {
         height: 80px;
