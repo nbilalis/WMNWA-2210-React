@@ -48,11 +48,11 @@ class: list, topbar-space
 ---
 template: cover
 
-## WMNWA 2210 | Web Applications
+# WMNWA 2210
 
-# React #1
+## Web App Development
 
-### Getting started
+### React #1 | Getting started
 
 ---
 template: section
@@ -106,21 +106,19 @@ template: chapter
 ### Basic Setup
 
 ---
-class: extra-long-code
+class: long-code
 
 #### Using CDN links
 
 Για την ανάπτυξη μίας απλής εφαρμογής, μπορεί να χρησιμοποιηθεί η βιβλιοθήκη `React` απευθείας από κάποιο _CDN_.
 
-Σε αυτή την περίπτωση αρκεί η προσθήκη των παρακάτω `script` στο τέλος του `body`.
+Σε αυτή την περίπτωση αρκεί η προσθήκη των παρακάτω `script` στο `head`.
 
 ```html
-<script crossorigin
-  src="https://unpkg.com/react@17/umd/react.development.js">
-</script>
-<script crossorigin
-  src="https://unpkg.com/react-dom@17/umd/react-dom.development.js">
-</script>
+<script src="https://unpkg.com/react/umd/react.development.js"
+        crossorigin defer></script>
+<script src="https://unpkg.com/react-dom/umd/react-dom.development.js"
+        crossorigin defer></script>
 
 ```
 
@@ -128,11 +126,11 @@ class: extra-long-code
 
 #### Γιατί δύο ξεχωριστά `script`;
 
-H `React` δεν αφορά αποκλειστικά _web_ εφαρμογές, μπορεί να υποστηρίξει και _native_ υλοποιήσεις.
+H `React` δεν αφορά αποκλειστικά σε _web_ εφαρμογές, μπορεί να υποστηρίξει και _native_ υλοποιήσεις.
 
-Η βασική λειτουργικότητα βρίσκεται στο `react.js`, ενώ η ένωση με τον _browser_ (`DOM`) γίνεται μέσω του `react-dom.js`.
+Η βασική λειτουργικότητα βρίσκεται στο `react.js`, ενώ η αποτύπωση στον _browser_ (`DOM`) γίνεται μέσω του `react-dom.js`.
 
-Στην ουσία, το `react-dom.js` αναλαμβάνει το _render_ στη σελίδα και το `react.js` όλα (?) τα υπόλοιπα.
+Στην ουσία, το `react-dom.js` αναλαμβάνει του _rendering_ στη σελίδα και το `react.js` όλα (?) τα υπόλοιπα.
 
 ---
 class: extra-long-code
@@ -144,8 +142,8 @@ class: extra-long-code
 Αν και η προσέγγιση αυτή, με τη χρήση των `script` απευθείας από κάποιο _CDN_, ίσως δεν είναι η απόλυτα ενδεδειγμένη, όταν/αν η εφαρμογή ανέβει σε _production_ περιβάλλον, θα χρειαστούμε τα παρακάτω `script`.
 
 ```html
-src="https://unpkg.com/react@17/umd/react.production.min.js"
-src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
+<script src="https://unpkg.com/react/umd/react.production.min.js" defer></script>
+<script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js" defer></script>
 
 ```
 
@@ -167,7 +165,7 @@ class: long-text
 
 #### `DOM` manipulation
 
-Η `HTML` είναι απλά μια σειρά από οδηγίες τις οποίες ακολουθεί ο _browser_ για να χτίσει το `DOM`.
+Η `HTML` είναι μια σειρά από οδηγίες τις οποίες ακολουθεί ο _browser_ για να χτίσει το `DOM`.
 
 Ως γνωστόν, κάποιος μπορεί να διαχειριστεί το `DOM` και μέσω της `JavaScript` και του `DOM API`, χρησιμοποιώντας μεθόδους όπως οι `document.createElement()`, `document.appendChild()`, κ.λπ.
 
@@ -197,23 +195,29 @@ React.createElement(type, [props], [...children])
 
 Μιας και δεν μπορούμε να χρησιμοποιήσουμε το _keyword_ `class` (ως _reserved word_), στη θέση του γράφουμε `className`.
 
+Ομοίως, στη θέση του _attribute_ `for` γράφουμε `htmlFor`.
+
 ---
 
 #### Παράδειγμα #1
 
 ```js
-const h1 = React.createElement(
-  'h1',
+const h1 = React.createElement('h1',
   { id: 'main-title'},
-  'Hello, people!'
+  'Hello, World!'
 );
-const h2 = React.createElement(
-  'h2',
+const h2 = React.createElement('h2',
   { className: 'secondary-title'},
   'Greetings from React!'
 );
+
 // Render the two elements inside the 'root' div
-ReactDOM.render([h1, h2], document.getElementById('root'));
+// React 18
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render([h1, h2]);
+
+// React 17
+// ReactDOM.render([h1, h2], document.getElementById('root'));
 
 ```
 
@@ -222,31 +226,33 @@ ReactDOM.render([h1, h2], document.getElementById('root'));
 #### Παράδειγμα #2
 
 ```js
-const h1 = React.createElement('h1', null, 'Child elements!');
-const ul = React.createElement(
-    'ul',
-    { className: 'secondary-title' },
-    React.createElement('li', null, '1st node'),
-    React.createElement('li', null, '2nd node'),
-    React.createElement('li', null, '3rd node'),
-    React.createElement('li', null, '4th node'),
+const h1 = React.createElement('h1', null, 'Recipe for muffins');
+const ul = React.createElement('ul', { className: 'ingredients' },
+    React.createElement('li', null, '2 cups of flour'),
+    React.createElement('li', null, '1 cup of sugar'),
+    React.createElement('li', null, '1 cup of milk'),
+    React.createElement('li', null, '1/2 cup of oil'),
+    React.createElement('li', null, '1 egg'),
 );
 
 // Render the elements inside the 'root' div
-ReactDOM.render([h1, ul], document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render([h1, ul]);
 
 ```
 
 ---
-class: extra-long-code
+class: long-code
 
 #### Παράδειγμα #3
 
 ```js
 const ingredients = [
-    { title: 'flour', quantity: '1kg', vegan: true },
-    { title: 'salt', quantity: '3tbs', vegan: true },
-    { title: 'eggs', quantity: '2' },
+    { title: 'flour', quantity: '2 cups', vegan: true },
+    { title: 'sugar', quantity: '1 cup', vegan: true },
+    { title: 'milk', quantity: '1 cup' },
+    { title: 'oil', quantity: '1/2 cup', vegan: true },
+    { title: 'eggs', quantity: '1' },
 ];
 
 const ul = React.createElement('ul',
@@ -259,7 +265,8 @@ const ul = React.createElement('ul',
     )
 );
 
-ReactDOM.render(ul, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(el);
 
 ```
 
@@ -282,7 +289,7 @@ template: chapter
 
 Ένα _component_, όχι μόνο στη `React` αλλά γενικά στον κόσμο των _web framework_, είναι ένα κομμάτι επαναχρησιμοποιούμενου κώδικα, το οποίο εμπεριέχει ότι αυτό χρειάζεται για τη λειτουργικότητά του.
 
-Σε αντίθεση με την κληρονομικότητα, από τον κόσμο του _Αντικειμενοστραφούς Προγραμματισμού_, εδώ συναντάμε τη φιλοσοφία της _Σύνθεσης_ (_Composition_).
+Σε αντίθεση με την κληρονομικότητα, από τον κόσμο του _Αντικειμενοστραφούς Προγραμματισμού_, εδώ συναντάμε την αρχή της _Σύνθεσης_ (_Composition_).
 
 ---
 
@@ -290,7 +297,7 @@ template: chapter
 
 Όπως θα γίνει ξεκάθαρο στη συνέχεια, η `React` βασίζεται στη φιλοσοφία του `Functional Programming`.
 
-Εδώ, το βασικό στοιχείο της εφαρμογής είναι οι συναρτήσεις, και μάλιστα οι "_pure_" συναρτήσεις, στις οποίες το επιστρεφόμενο αποτέλεσμα βασίζεται αποκλειστικά στα δεδομένα εισόδου.
+Εδώ, το βασικό στοιχείο της εφαρμογής είναι οι συναρτήσεις, και μάλιστα οι "_pure_" συναρτήσεις, στις οποίες το επιστρεφόμενο αποτέλεσμα βασίζεται αποκλειστικά στα δεδομένα εισόδου και δεν προκαλούν _side effects_.
 
 Ένα _React Component_ είναι μια συνάρτηση (_function_) που επιστρέφει ένα _React Element_.
 
@@ -316,10 +323,11 @@ function MovieList({ items, separator }) { // props destructuring
     )
 }
 
-ReactDOM.render([
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render([
     React.createElement(Header, null),
     React.createElement(MovieList, { items: movies })
-], document.getElementById('root'))
+])
 
 ```
 
@@ -342,7 +350,7 @@ const element = <h1>Hello, world!</h1>;
 Σε σύνθετες εφαρμογές, είναι δύσκολο να δομήσουμε έναν όμορφο και ευανάγνωστο κώδικα με εμφωλευμένες κλήσεις της `React.createElement()`.
 
 ---
-class: long-text
+class: long-text, long-code
 
 #### Not a template engine
 
@@ -355,8 +363,7 @@ class: long-text
 Χρειάζεται τη βιβλιοθήκη _Babel_ για να μπορέσει να εκτελεστεί σε browser.
 
 ```html
-<script
-  src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js" defer></script>
 
 ```
 
@@ -390,7 +397,8 @@ const header = <h1 id="main-header" style={styles}>
 // It's still a React element
 console.log(header);
 
-ReactDOM.render(header, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(header);
 
 ```
 
@@ -401,20 +409,21 @@ ReactDOM.render(header, document.getElementById('root'));
 ```js
 const movie = { title: 'Dune', rating: 8.4, sum: 117 };
 
-const Header = () => (
-  <h1>Box Office</h1>
-);
+const Header = () => (<h1>Box Office</h1>);
 
 const Movie = ({ movie }) => (
-  <ul>
-    <li>{`${movie.title} | $${movie.sum}m | ${movie.rating}⭐`}</li>
-  </ul>
+  <div>
+    <h2>{movie.title}</h2>
+    <span>${movie.sum}m</span> -
+    <span>{movie.rating}⭐</span>
+  </div>
 );
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render([
+  <Header />,
+  <Movie movie={movie} />
+]);
 
 ```
 
@@ -423,16 +432,16 @@ class: long-text
 
 #### Loops & Conditionals
 
-Η `React` ακολουθεί τη φιλοσοφία του _Functional Programming_.
+Όπως αναφέρθηκε και νωρίτερα, η `React` ακολουθεί τη φιλοσοφία του _Functional Programming_.
 
 Σε αυτή επικρατεί η _declarative_ προσέγγιση, έναντι της _imperative_. Μέσα στα _curly brackets_ της `JSX` ενσωματώνουμε _expression_ και όχι _statement_.
 
-Για το λόγο αυτό, σε κώδικα `React` θα δούμε να χρησιμοποιείται συχνά η _high-order function_ `map`, στη θέση εντολών και μεθόδων όπως οι `for`, `forEach`, κ.λπ.
+Για το λόγο αυτό, σε κώδικα `React` θα δούμε να χρησιμοποιείται συχνά η _higher-order function_ `map`, στη θέση εντολών και μεθόδων όπως οι `for`, `forEach`, κ.λπ.
 
 Επίσης, η _conditional_ λογική αναπαριστάται, όχι με τις εντολές `if` ή `switch`, αλλά με τους _ternary_, _logical_ και _nullish coalescing_ τελεστές, ειδικά μέσα στη `JSX`.
 
 ---
-class: extra-long-code
+class: long-code
 
 #### Παράδειγμα
 
@@ -443,7 +452,7 @@ const Header = () => (<h1>Box Office</h1>);
 
 const MovieList = ({ movies }) => (<ul>
     {movies.map((m) => (<li>
-      {`${m.title} ${m.sum ? `| $${m.sum}m` : ''} | ${m.rating}⭐`}
+      {m.title} {m.sum ? `| ${m.sum}m` : ''} | {m.rating}⭐
     </li>))}
   </ul>);
 
@@ -454,7 +463,8 @@ const App = () => (
   </React.Fragment>
 );
 
-ReactDOM.render(<App />,  document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
 
 ```
 
@@ -470,39 +480,43 @@ template: chapter
 ### Homework
 
 ---
-class: long-text
+class: extra-long-text
 
-Φτιάξτε μια μικρή "εφαρμογή" σε `React` που να κάνει εμφανίζει τα υλικά μια συνταγής.
+#### Λίστα Προϊόντων
+
+Φτιάξτε μια μικρή εφαρμογή σε `React`, που να εμφανίζει μία λίστα προϊόντων.
 
 Στην εφαρμογή θα πρέπει:
 
-- Να υπάρχει μία επικεφαλίδα `h1` (ως `Component`).
-- Να υπάρχει μία λίστα `ul` (ως `Component`), όπου κάθε στοιχείο `li` είναι και ένα συστατικό της συνταγής.
-- Τα συστατικά να βρίσκονται σε πίνακα.
-- Τα συστατικά να έχουν τα εξής χαρακτηριστικά:
-  - τίτλος
-  - ποσότητα
-  - vegan / non vegan (ως `boolean`)
+- Να υπάρχει μία επικεφαλίδα `h1` (`Component` _Header_).
+- Να υπάρχει μία λίστα `ul` (`Component` _ProductList_), όπου κάθε στοιχείο `li` (`Component` _Product_) να είναι και ένα προϊόν.
+- Τα στοιχεία των προϊόντων να βρίσκονται σε πίνακα.
+- Τα προϊόντα να έχουν τα εξής χαρακτηριστικά: _τίτλος_, _τιμή_, _έκπτωση_ (σε ποσοστό), _απόθεμα_ και ένα πεδίο `isOnSale` που να δείχνει αν το προϊόν είναι σε προσφορά ή όχι (τα χαρακτηριστικά αυτά διαχειριστείτε τα όπως νομίζετε για την εμφάνιση των προϊόντων).
+- Να γίνει χρήση της σύνταξης `JSX`.
 
 ---
 template: list
 
 ### Χρήσιμα links
 
-- ![](https://www.google.com/s2/favicons?domain=reactjs.org) Getting Started – React https://reactjs.org/docs/getting-started.html
-- ![](https://www.google.com/s2/favicons?domain=reactjs.org) CDN Links – React https://reactjs.org/docs/cdn-links.html
-- ![](https://www.google.com/s2/favicons?domain=learn.co) React Create Element - Learn.co https://learn.co/lessons/react-create-element
-- ![](https://www.google.com/s2/favicons?domain=reactjs.org) Components and Props – React https://reactjs.org/docs/components-and-props.html
-- ![](https://www.google.com/s2/favicons?domain=reactjs.org) Introducing JSX – React https://reactjs.org/docs/introducing-jsx.html
+- ![favicon](https://www.google.com/s2/favicons?domain=reactjs.org) Getting Started – React https://reactjs.org/docs/getting-started.html
+- ![favicon](https://www.google.com/s2/favicons?domain=reactjs.org) CDN Links – React https://reactjs.org/docs/cdn-links.html
+- ![favicon](https://www.google.com/s2/favicons?domain=learn.co) React Create Element - Learn.co https://learn.co/lessons/react-create-element
+- ![favicon](https://www.google.com/s2/favicons?domain=reactjs.org) DOM Elements – React https://reactjs.org/docs/dom-elements.html
+- ![favicon](https://www.google.com/s2/favicons?domain=reactjs.org) Components and Props – React https://reactjs.org/docs/components-and-props.html
+- ![favicon](https://www.google.com/s2/favicons?domain=reactjs.org) Introducing JSX – React https://reactjs.org/docs/introducing-jsx.html
+- ![favicon](https://www.google.com/s2/favicons?domain=reactjs.org) Rendering Elements – React https://reactjs.org/docs/rendering-elements.html
+- ![favicon](https://www.google.com/s2/favicons?domain=reactjs.org) Lists and Keys – React https://reactjs.org/docs/lists-and-keys.html
+- ![favicon](https://www.google.com/s2/favicons?domain=beta.reactjs.org) Rendering Lists https://beta.reactjs.org/learn/rendering-lists
 
 ---
 template: list
 
 ### Extra info
 
-- ![](https://www.google.com/s2/favicons?domain=reactjs.org) Composition vs Inheritance – React https://reactjs.org/docs/composition-vs-inheritance.html
-- ![](https://www.google.com/s2/favicons?domain=www.telerik.com) A Beginner’s Guide to Loops in React JSX https://www.telerik.com/blogs/beginners-guide-loops-in-react-jsx
-- ![](https://www.google.com/s2/favicons?domain=blog.logrocket.com) Conditional rendering in React: 9 methods with examples - LogRocket Blog https://blog.logrocket.com/conditional-rendering-in-react-c6b0e5af381e/
+- ![favicon](https://www.google.com/s2/favicons?domain=reactjs.org) Composition vs Inheritance – React https://reactjs.org/docs/composition-vs-inheritance.html
+- ![favicon](https://www.google.com/s2/favicons?domain=blog.isquaredsoftware.com) Blogged Answers: A (Mostly) Complete Guide to React Rendering Behavior · Mark's Dev Blog https://blog.isquaredsoftware.com/2020/05/blogged-answers-a-mostly-complete-guide-to-react-rendering-behavior/#component-types-and-reconciliation
+- ![](https://www.google.com/s2/favicons?domain=developer.mozilla.org) Array.prototype.map() - JavaScript | MDN https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 
 ---
 template: section
