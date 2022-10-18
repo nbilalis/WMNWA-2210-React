@@ -48,11 +48,11 @@ class: list, topbar-space
 ---
 template: cover
 
-## WMNWA 2210 | Web Applications
+# WMNWA 2210
 
-# React #2
+## Web App Development
 
-### Components
+### React 2 | Components
 
 ---
 template: section
@@ -151,10 +151,8 @@ function Header() {
   );
 }
 
-ReactDOM.render(
-  React.createElement(Header),
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(Header));
 
 ```
 
@@ -190,7 +188,8 @@ const Header = () => (
   </h1>
 );
 
-ReactDOM.render(<Header />, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Header />);
 
 ```
 
@@ -202,7 +201,7 @@ ReactDOM.render(<Header />, document.getElementById('root'));
 
 Δέχονται είσοδο (`props`) και επιστρέφουν `React element`, τα οποία περιγράφουν τι πρέπει να αποτυπωθεί στο `UI`.
 
-Όλα τα _attributes_ που υπάρχουν στη `JSX` περνάνε, μέσω του αντικειμένου `props`, στο αντίστοιχο `Component`.
+Όλα τα _attributes_ που υπάρχουν στη `JSX` περνούν, μέσω του αντικειμένου `props`, στο αντίστοιχο `Component`.
 
 Επιπλέον, αν ένα `Component` περικλείει άλλα `Component` ή `HTML tag`, αυτά είναι διαθέσιμα μέσω του `props.children`.
 
@@ -210,7 +209,7 @@ ReactDOM.render(<Header />, document.getElementById('root'));
 
 #### `Props` & _Curly Brackets_
 
-Αν ένα `attribute` πέρνει τιμή "δυναμικά", τότε πρέπει να χρησιμοποιηθούν τα `{ }` αντί των `" "` ή `' '`.
+Αν ένα `attribute` παίρνει τιμή "δυναμικά", τότε πρέπει να χρησιμοποιηθούν τα `{ }` αντί των `" "` ή `' '`.
 
 Το ίδιο ισχύει και όταν θέλουμε να περάσουμε μια τιμή που δεν είναι αλφαριθμητική (`string`).
 
@@ -229,16 +228,14 @@ const component = <ProductList title={title} noOfItems={10} />
 const cssAttrs = { color: '#61DAFB', backgroundColor: 'black' };
 
 const Header = (props) => (
-  <h1 id="main-header" style={props.styles}>
+  <h1 id="main-header" style={props.style}>
     Hello, from {props.greeter}!
     Time is {new Date().toLocaleTimeString()}
   </h1>
 );
 
-ReactDOM.render(
-  <Header greeter="JSX" style={cssAttrs} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Header greeter="JSX" style={cssAttrs} />);
 
 ```
 
@@ -265,7 +262,8 @@ const App = () => (
   </>
 );
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
 
 ```
 
@@ -288,7 +286,8 @@ const App = () => (
   </CodeFormatter>
 );
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
 
 ```
 
@@ -322,9 +321,7 @@ const Header = () => (<h1>Box Office</h1>);
 const MovieList = ({ movies }) => (
   <ul>
     {movies.map((m) => (
-      <li>
-        {`${m.title} ${m.sum ? `| $${m.sum}m` : ''} | ${m.rating}⭐`}
-      </li>
+      <li>{`${m.title} ${m.sum ? `| $${m.sum}m` : ''} | ${m.rating}⭐`}</li>
     ))}
   </ul>
 );
@@ -336,7 +333,8 @@ const App = () => (
   </>
 );
 
-ReactDOM.render(<App />,  document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
 
 ```
 
@@ -411,7 +409,7 @@ const Counter = ({initial}) => {
 ```
 
 ---
-class: long-code
+class: extra-long-code
 
 #### Παράδειγμα #2
 
@@ -435,7 +433,8 @@ const App = () => (
   <ClickCounter />
 );
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
 
 ```
 
@@ -451,10 +450,11 @@ template: chapter
 ### Homework
 
 ---
+class: long-text
 
 #### Αccordion menu
 
-Να φτιαχτεί ένα `React Component` που να υλοποιεί ένα<br> _accordion menu_.
+Να φτιαχτεί ένα `React Component` που να υλοποιεί ένα <nobr>_accordion menu_</nobr>.
 
 Το μενού θα αποτελείται από δυάδες `h2` & `div`, οι οποίες μπορεί να είναι αποθηκευμένες σε έναν πίνακα.
 
@@ -479,14 +479,15 @@ template: list
 
 ### Extra info
 
-- ![](https://www.google.com/s2/favicons?domain=reactjs.org) Composition vs Inheritance – React https://reactjs.org/docs/composition-vs-inheritance.html
 - ![](https://www.google.com/s2/favicons?domain=www.telerik.com) A Beginner’s Guide to Loops in React JSX https://www.telerik.com/blogs/beginners-guide-loops-in-react-jsx
-- ![](https://www.google.com/s2/favicons?domain=blog.logrocket.com) Conditional rendering in React: 9 methods with examples - LogRocket Blog https://blog.logrocket.com/conditional-rendering-in-react-c6b0e5af381e/
-- ![](https://www.google.com/s2/favicons?domain=developer.mozilla.org) Destructuring assignment - JavaScript | MDN https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#object_destructuring
+- ![favicon](https://www.google.com/s2/favicons?domain=reactjs.org) Conditional Rendering – React https://reactjs.org/docs/conditional-rendering.html
+- ![favicon](https://www.google.com/s2/favicons?domain=beta.reactjs.org) Conditional Rendering https://beta.reactjs.org/learn/conditional-rendering
 - ![](https://www.google.com/s2/favicons?domain=developer.mozilla.org) Conditional (ternary) operator - JavaScript | MDN https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
 - ![](https://www.google.com/s2/favicons?domain=developer.mozilla.org) Nullish coalescing operator (??) - JavaScript | MDN https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator
-- ![](https://www.google.com/s2/favicons?domain=developer.mozilla.org) Array.prototype.map() - JavaScript | MDN https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+- ![](https://www.google.com/s2/favicons?domain=developer.mozilla.org) Destructuring assignment - JavaScript | MDN https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#object_destructuring
 - ![](https://www.google.com/s2/favicons?domain=reactjs.org) Passing Functions to Components – React https://reactjs.org/docs/faq-functions.html
+
+- ![favicon](https://www.google.com/s2/favicons?domain=www.telerik.com) A Beginner’s Guide to Loops in React JSX https://www.telerik.com/blogs/beginners-guide-loops-in-react-jsx
 
 ---
 template: section
