@@ -1,29 +1,35 @@
 // Character limiting function component
 
-const CharacterCountingInput = ({ limit }) => {
+const CharacterLimitInput = ({ limit = 120 }) => {
   // Setting two distinct state variables
   const [charCount, setCharCount] = React.useState(limit);
   const [color, setColor] = React.useState("darkgreen");
 
   const changeHandler = (e) => {
-    const left = limit - e.target.value.length;
-    setCharCount(left);
+    const length = event.target.value.length;
+    const remaining = limit - length;
 
-    if (left < 0) setColor("red");
+    setCharCount(remaining);
+
+    if (remaining < 0) {
+      setColor("red");
+    }
   };
 
   return (
-    <>
+    <div>
       <input type="text" onChange={changeHandler} />
       <span style={{ color }}>{charCount}</span>
-    </>
+    </div>
   );
 };
 
 const App = () => (
   <>
-    <CharacterCountingInput limit={10} />
+    <CharacterLimitInput />
+    <CharacterLimitInput limit={10} />
   </>
 );
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
