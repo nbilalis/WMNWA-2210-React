@@ -4,11 +4,11 @@ import { FaStar } from 'react-icons/fa';
 
 interface StarProps {
   on: boolean;
-  onSelect: () => void;
+  clickHandler: () => void;
 }
 
-function Star({ on = false, onSelect }: StarProps) {
-  return <FaStar color={on ? 'yellow' : 'grey'} onClick={onSelect} fontSize="36" />;
+function Star({ on = false, clickHandler }: StarProps) {
+  return <FaStar color={on ? 'orange' : 'gray'} onClick={clickHandler} />;
 }
 
 /* Star.propTypes = {
