@@ -1,65 +1,70 @@
-import { useReducer, KeyboardEvent } from 'react';
+import { useReducer, KeyboardEvent, MouseEvent } from 'react';
 import { v4 } from 'uuid';
 
-import './Todos.scss';
+import './Todos.scoped.scss';
 
 interface Todo {
   id: string;
-  text?: string; // text is optional
+  text: string;
 }
 
 interface Action {
   type: 'ADD' | 'REMOVE';
-  payload: Todo;
+  payload: Partial<Todo>;
 }
 
 // The reducer function for the Todos
 const reducer = (state: Todo[], action: Action) => {
   switch (action.type) {
     case 'ADD':
-      return [...state, action.payload];
+      return [...state, action.payload as Todo];
     case 'REMOVE':
-      return state.filter((todo) => todo.id !== action.payload.id);
+      return state.filter((item) => item.id !== action.payload.id);
     default:
-      throw new Error(`Invalid action type: ${action.type}`);
+      throw new Error(`Unknown action type: ${action.type}`);
   }
 };
 
 function Todos() {
   const [todos, dispatch] = useReducer(reducer, []);
 
-  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-    // Get the element that fired teh event
-    const el = e.currentTarget;
+  const addTodo = (event: KeyboardEvent<HTMLInputElement>) => {
+    // Get the element that fired the event
+    const el = event.currentTarget;
+    // Make a new unique id
+    const id = v4();
     // Get its value
-    const value = el.value.trim();
+    const text = el.value.trim();
 
     // If the "Enter" key was pressed and there is a value
-    if (e.key === 'Enter' && value.length) {
-      // Add a new Todo item
-      dispatch({
-        type: 'ADD',
-        payload: { id: v4(), text: value },
-      });
+    if (event.key === 'Enter' && text.length) {
+      // Dispatch the 'ADD' action
+      dispatch({ type: 'ADD', payload: { id, text } });
       // Clear the value of the input element
       el.value = '';
     }
   };
 
+  // This is an event handler for removing Todos
+  const removeTodo = (event: MouseEvent<HTMLButtonElement>) => {
+    // Get the element that fired the event
+    const el = event.currentTarget;
+    // Get Todo's id. It was stored in `data-id`.
+    const { id } = el.dataset;
+
+    // Dispatch the 'REMOVE' action
+    if (id) dispatch({ type: 'REMOVE', payload: { id } });
+  };
+
   return (
     <>
-      <h2>Todos: {todos.length}</h2>
-      <input type="text" onKeyPress={handleKeyPress} title="Enter Todo text here" placeholder="Enter Todo text here" />
+      <h2>Todos: {todos.length ? todos.length : '[none]'}</h2>
+      <input type="text" onKeyPress={addTodo} title="enter todo text here…" placeholder="enter todo text…" />
       <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>
-            {todo.text}
-            <button
-              type="button"
-              onClick={() => {
-                dispatch({ type: 'REMOVE', payload: { id: todo.id } });
-              }}
-            >
+        {todos.map((item) => (
+          <li key={item.id}>
+            {item.text}
+            <button data-id={item.id} type="button" onClick={removeTodo}>
               ✖
             </button>
           </li>
