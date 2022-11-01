@@ -48,11 +48,11 @@ class: list, topbar-space
 ---
 template: cover
 
-## WMNWA 2210 | Web Applications
+# WMNWA 2210
 
-# React #4
+## Web App Development
 
-### Managing State
+### React 4 | Managing State
 
 ---
 template: section
@@ -180,8 +180,7 @@ const App = () => (
   <ClickCounter />
 );
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 ```
 
 ---
@@ -486,6 +485,7 @@ template: list
 - ![](https://www.google.com/s2/favicons?domain=reactjs.org) Hooks at a Glance – React https://reactjs.org/docs/hooks-overview.html
 - ![](https://www.google.com/s2/favicons?domain=reactjs.org) React Hooks - React docs https://reactjs.org/docs/hooks-state.html
 - ![](https://www.google.com/s2/favicons?domain=reactjs.org) Hooks API Reference – React https://reactjs.org/docs/hooks-reference.html
+- ![](https://www.google.com/s2/favicons?domain=dmitripavlutin.com) An Easy Guide to React useReducer() Hook https://dmitripavlutin.com/react-usereducer/
 
 ---
 template: list
