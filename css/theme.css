@@ -77,9 +77,6 @@
 .remark-slide h3 + p img {
   height: 25vw;
 }
-.remark-slide h4 + p img {
-  height: 20vw;
-}
 .remark-slide .common {
   background: linear-gradient(to bottom, #262626 100px, #0d0d0d 100px, #0d0d0d 100%);
 }
@@ -270,7 +267,7 @@
 }
 .remark-slide .chapter > p img {
   display: block;
-  max-width: 90%;
+  max-width: 50rem;
   margin: 2rem auto;
 }
 .remark-slide .chapter blockquote {

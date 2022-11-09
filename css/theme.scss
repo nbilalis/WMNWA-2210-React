@@ -99,10 +99,6 @@ $accent-color: #743bbc;
     height: 25vw;
   }
 
-  h4 + p img {
-    height: 20vw;
-  }
-
   $topbar-height: 100px;
   $logo-height: 60px;
   $horizontal-margin: 40px;
@@ -354,7 +350,7 @@ $accent-color: #743bbc;
     > p {
       img {
         display: block;
-        max-width: 90%;
+        max-width: 50rem;
         margin: 2rem auto;
       }
     }
