@@ -48,11 +48,11 @@ class: list, topbar-space
 ---
 template: cover
 
-## WMNWA 2210 | Web Applications
+# WMNWA 2210
 
-# React #5
+## Web App Development
 
-### Passing Data
+### React 5 | Passing Data
 
 ---
 template: section
@@ -277,8 +277,7 @@ import { MovieDataContext } from './App';
 function TopMovies() {
   const { movies } = useContext(MovieDataContext);
 
-  return (
-    <>
+  return (<>
       <h2>Top Movies</h2>
       <ol>
         {movies
@@ -291,8 +290,7 @@ function TopMovies() {
           )
         )}
       </ol>
-    </>
-  );
+    </>);
 }
 
 ```
@@ -376,25 +374,26 @@ template: list
 
 ### Χρήσιμα links
 
-- ![](https://www.google.com/s2/favicons?domain=beta.reactjs.org) Thinking in React https://beta.reactjs.org/learn/thinking-in-react
-- ![](https://www.google.com/s2/favicons?domain=reactjs.org) useReducer - Hooks API Reference – React https://reactjs.org/docs/hooks-reference.html#usereducer
-- ![](https://www.google.com/s2/favicons?domain=beta.reactjs.org) Sharing State Between Components https://beta.reactjs.org/learn/sharing-state-between-components
-- ![](https://www.google.com/s2/favicons?domain=beta.reactjs.org) Passing Data Deeply with Context https://beta.reactjs.org/learn/passing-data-deeply-with-context
-- ![](https://www.google.com/s2/favicons?domain=beta.reactjs.org) Scaling Up with Reducer and Context https://beta.reactjs.org/learn/scaling-up-with-reducer-and-context
+- ![favicon](https://www.google.com/s2/favicons?domain=beta.reactjs.org) Thinking in React https://beta.reactjs.org/learn/thinking-in-react
+- ![favicon](https://www.google.com/s2/favicons?domain=reactjs.org) useReducer - Hooks API Reference – React https://reactjs.org/docs/hooks-reference.html#usereducer
+- ![favicon](https://www.google.com/s2/favicons?domain=beta.reactjs.org) Sharing State Between Components https://beta.reactjs.org/learn/sharing-state-between-components
+- ![favicon](https://www.google.com/s2/favicons?domain=beta.reactjs.org) Passing Data Deeply with Context https://beta.reactjs.org/learn/passing-data-deeply-with-context
+- ![favicon](https://www.google.com/s2/favicons?domain=beta.reactjs.org) Scaling Up with Reducer and Context https://beta.reactjs.org/learn/scaling-up-with-reducer-and-context
 
 ---
 template: list
 
 ### Extra info
 
-- ![](https://www.google.com/s2/favicons?domain=kentcdodds.com) Prop Drilling https://kentcdodds.com/blog/prop-drilling
-- ![](https://www.google.com/s2/favicons?domain=dev.to) React doesn't need state management tool, I said - DEV Community https://dev.to/tolgee_i18n/react-doesnt-need-state-management-tool-i-said-31l4
-- ![](https://www.google.com/s2/favicons?domain=www.emgoto.com) Getting started with state management using useReducer and Context · Emma Goto https://www.emgoto.com/react-state-management/
-- ![](https://www.google.com/s2/favicons?domain=hswolff.com) How To useContext With useReducer | Harry Wolff https://hswolff.com/blog/how-to-usecontext-with-usereducer/
-- ![](https://www.google.com/s2/favicons?domain=moduscreate.com) React Context API Global State Management - Modus Create https://moduscreate.com/blog/react-context-api-state-management/
-- ![](https://www.google.com/s2/favicons?domain=thoughtspile.github.io) How to destroy your app performance using React contexts https://thoughtspile.github.io/2021/10/04/react-context-dangers/
-- ![](https://www.google.com/s2/favicons?domain=kentcdodds.com) How to use React Context effectively https://kentcdodds.com/blog/how-to-use-react-context-effectively
-- ![](https://www.google.com/s2/favicons?domain=kentcdodds.com) How to optimize your context value https://kentcdodds.com/blog/how-to-optimize-your-context-value
+- ![favicon](https://www.google.com/s2/favicons?domain=kentcdodds.com) Prop Drilling https://kentcdodds.com/blog/prop-drilling
+- ![favicon](https://www.google.com/s2/favicons?domain=dev.to) React doesn't need state management tool, I said - DEV Community https://dev.to/tolgee_i18n/react-doesnt-need-state-management-tool-i-said-31l4
+- ![favicon](https://www.google.com/s2/favicons?domain=www.emgoto.com) Getting started with state management using useReducer and Context · Emma Goto https://www.emgoto.com/react-state-management/
+- ![favicon](https://www.google.com/s2/favicons?domain=hswolff.com) How To useContext With useReducer | Harry Wolff https://hswolff.com/blog/how-to-usecontext-with-usereducer/
+- ![favicon](https://www.google.com/s2/favicons?domain=moduscreate.com) React Context API Global State Management - Modus Create https://moduscreate.com/blog/react-context-api-state-management/
+- ![favicon](https://www.google.com/s2/favicons?domain=thoughtspile.github.io) How to destroy your app performance using React contexts https://thoughtspile.github.io/2021/10/04/react-context-dangers/
+- ![favicon](https://www.google.com/s2/favicons?domain=kentcdodds.com) How to use React Context effectively https://kentcdodds.com/blog/how-to-use-react-context-effectively
+- ![favicon](https://www.google.com/s2/favicons?domain=kentcdodds.com) How to optimize your context value https://kentcdodds.com/blog/how-to-optimize-your-context-value
+- ![favicon](https://www.google.com/s2/favicons?domain=dev.to) useReducer TypeScript: React Context with useReducer and Typescript. - DEV Community 👩‍💻 https://dev.to/elisealcala/react-context-with-usereducer-and-typescript-4obm
 
 ---
 template: section
