@@ -1,0 +1,16 @@
+div {
+  display: flex;
+  justify-content: space-between;
+}
+
+span.text.completed {
+  color: #666;
+  text-decoration: line-through;
+}
+
+span.buttons {
+  &::v-deep svg {
+    margin-left: 0.5em;
+    cursor: pointer;
+  }
+}
