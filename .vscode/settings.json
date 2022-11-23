@@ -22,4 +22,9 @@
 	"search.exclude": {
 		"**/.git": true,
 	},
+
+	"explorer.fileNesting.patterns": {
+    	"*.jsx": "${capture}.scss, ${capture}.scoped.scss",
+    	"*.tsx": "${capture}.scss, ${capture}.scoped.scss",
+	},
 }
