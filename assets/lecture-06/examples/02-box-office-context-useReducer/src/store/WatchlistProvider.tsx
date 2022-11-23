@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 
-import { createContext, ReactNode, useContext, useReducer } from 'react';
+import type { ReactNode } from 'react';
+import { createContext, useContext, useReducer } from 'react';
 
-import WatchlistAction from '../types/WatchlistAction';
+import type WatchlistAction from '../types/WatchlistAction';
 
 // Context schema
 interface WatchlistContext {
@@ -12,9 +13,7 @@ interface WatchlistContext {
 
 // Create the Context
 const WatchlistContext = createContext<number[]>([]);
-const WatchlistDispatchContext = createContext<
-  (action: WatchlistAction) => void
->(() => {});
+const WatchlistDispatchContext = createContext<(action: WatchlistAction) => void>(() => {});
 
 // Provide custom hooks for accessing the Contexts
 const useWatchlist = () => useContext(WatchlistContext);
@@ -28,7 +27,7 @@ const reducer = (state: number[], action: WatchlistAction) => {
     case 'REMOVE':
       return state.filter((item) => item !== action.payload);
     default:
-      throw new Error();
+      throw new Error(`Unhandled action type: ${action.type}`);
   }
 };
 
@@ -44,15 +43,13 @@ function WatchlistProvider({ children }: WatchlistProviderProps) {
 
   return (
     <WatchlistDispatchContext.Provider value={dispatch}>
-      <WatchlistContext.Provider value={watchlist}>
-        {children}
-      </WatchlistContext.Provider>
+      <WatchlistContext.Provider value={watchlist}>{children}</WatchlistContext.Provider>
     </WatchlistDispatchContext.Provider>
   );
 }
 
-// Export the custom hook
-export { useWatchlist, useWatchlistDispatch };
-
 // Export (as default) the WatchlistProvider Component
 export default WatchlistProvider;
+
+// Export the custom hook
+export { useWatchlist, useWatchlistDispatch };

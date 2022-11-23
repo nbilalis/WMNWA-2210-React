@@ -1,8 +1,8 @@
-import MovieDataProvider from '../store/MovieDataProvider';
-import WatchlistProvider from '../store/WatchlistProvider';
+import MovieDataProvider from './store/MovieDataProvider';
+import WatchlistProvider from './store/WatchlistProvider';
 
-import MovieList from './MovieList';
-import Watchlist from './Watchlist';
+import MovieList from './components/MovieList';
+import Watchlist from './components/Watchlist';
 
 import './App.scss';
 

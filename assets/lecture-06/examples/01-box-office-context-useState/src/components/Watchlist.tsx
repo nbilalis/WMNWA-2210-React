@@ -1,3 +1,5 @@
+import { BsFillBookmarkXFill } from 'react-icons/bs';
+
 import { useMovieData } from '../store/MovieDataProvider';
 import { useWatchlist } from '../store/WatchlistProvider';
 
@@ -14,7 +16,7 @@ function Watchlist({ title }: WatchlistProps) {
   const moviedata = useMovieData();
   const { watchlist, removeFromWatchlist } = useWatchlist();
 
-  if (watchlist.length === 0) return null;
+  if (!watchlist.length || !moviedata) return null;
 
   // const list = moviedata.filter((movie) => watchlist.includes(movie.id));
   const list = watchlist
@@ -32,7 +34,7 @@ function Watchlist({ title }: WatchlistProps) {
             <MovieCard
               movie={movie}
               image="backdrop"
-              buttonText="❌"
+              buttonText={<BsFillBookmarkXFill color="red" />}
               onClick={() => {
                 removeFromWatchlist(movie.id);
               }}

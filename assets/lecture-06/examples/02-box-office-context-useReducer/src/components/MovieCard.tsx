@@ -1,13 +1,15 @@
+import type { ReactNode } from 'react';
+
 import MoviePoster from './MoviePoster';
 
-import Movie from '../types/Movie';
+import type Movie from '../types/Movie';
 
 import './MovieCard.scoped.scss';
 
 interface MovieCardProps {
   movie: Movie;
   image?: 'poster' | 'backdrop';
-  buttonText: string;
+  buttonText: ReactNode;
   onClick: () => void;
 }
 
@@ -17,9 +19,7 @@ function MovieCard({ movie, image, onClick, buttonText }: MovieCardProps) {
       <div>
         <MoviePoster
           size="w185"
-          poster={
-            image === 'backdrop' ? movie.backdrop_path : movie.poster_path
-          }
+          poster={image === 'backdrop' ? movie.backdrop_path : movie.poster_path}
           alt={movie.title}
         />
       </div>

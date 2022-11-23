@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-
 interface Movie {
   id: number;
   adult: boolean;

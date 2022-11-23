@@ -1,17 +1,15 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from 'react';
-import Movie from '../types/Movie';
+import type { ReactNode } from 'react';
+import { createContext, useContext } from 'react';
+
+import type Movie from '../types/Movie';
+
+import useFetch from '../hooks/useFetch';
 
 // Key for the TMDB API
-const API_KEY = 'REGISTER_FOR_AN_ACCOUNT_TO_TMDB_AND_ENTER_THE_API_KEY_HERE';
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 // Create the Context
-const MovieDataContext = createContext<Movie[]>([]);
+const MovieDataContext = createContext<Movie[] | null>([]);
 // Provide a custom hook for accessing the Context
 const useMovieData = () => useContext(MovieDataContext);
 
@@ -22,21 +20,14 @@ interface MovieDataProviderProps {
 
 // MovieDataProvider Component
 function MovieDataProvider({ children }: MovieDataProviderProps) {
-  // Component/Context State
-  const [movieData, setMovieData] = useState<Movie[]>([]);
-
   // Fetch the movie data from the API
-  useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
-      .then((res) => res.json())
-      .then((data) => setMovieData(data.results));
-  }, []);
-
-  return (
-    <MovieDataContext.Provider value={movieData}>
-      {children}
-    </MovieDataContext.Provider>
+  const { data: movieData } = useFetch<Movie[]>(
+    `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
+    [],
+    (data) => data.results
   );
+
+  return <MovieDataContext.Provider value={movieData}>{children}</MovieDataContext.Provider>;
 }
 
 // Export the custom hook

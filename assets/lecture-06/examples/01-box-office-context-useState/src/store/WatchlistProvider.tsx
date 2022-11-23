@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { createContext, ReactNode, useContext, useState, useMemo } from 'react';
 
 // Context schema
 interface WatchlistContext {
@@ -8,9 +8,7 @@ interface WatchlistContext {
 }
 
 // Create the Context
-const WatchlistContext = createContext<WatchlistContext>(
-  {} as WatchlistContext
-);
+const WatchlistContext = createContext({} as WatchlistContext);
 // Provide a custo hook for accessing the Context
 const useWatchlist = () => useContext(WatchlistContext);
 
@@ -33,13 +31,9 @@ function WatchlistProvider({ children }: WatchlistProviderProps) {
     setWatchlist((prev) => prev.filter((item) => item !== id));
   };
 
-  return (
-    <WatchlistContext.Provider
-      value={{ watchlist, addToWatchlist, removeFromWatchlist }}
-    >
-      {children}
-    </WatchlistContext.Provider>
-  );
+  const value = useMemo(() => ({ watchlist, addToWatchlist, removeFromWatchlist }), [watchlist]);
+
+  return <WatchlistContext.Provider value={value}>{children}</WatchlistContext.Provider>;
 }
 
 // Export the custom hook

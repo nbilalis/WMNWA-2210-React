@@ -1,3 +1,5 @@
+import { BsFillBookmarkCheckFill } from 'react-icons/bs';
+
 import { useMovieData } from '../store/MovieDataProvider';
 import { useWatchlistDispatch } from '../store/WatchlistProvider';
 
@@ -17,17 +19,18 @@ function MovieList({ title }: MovieListProps) {
     <>
       <h2>{title}</h2>
       <ul>
-        {movieData.map((movie) => (
-          <li key={movie.id}>
-            <MovieCard
-              movie={movie}
-              buttonText="👁"
-              onClick={() => {
-                dispatch({ type: 'ADD', payload: movie.id });
-              }}
-            />
-          </li>
-        ))}
+        {movieData &&
+          movieData.map((movie) => (
+            <li key={movie.id}>
+              <MovieCard
+                movie={movie}
+                buttonText={<BsFillBookmarkCheckFill color="red" />}
+                onClick={() => {
+                  dispatch({ type: 'ADD', payload: movie.id });
+                }}
+              />
+            </li>
+          ))}
       </ul>
     </>
   );
