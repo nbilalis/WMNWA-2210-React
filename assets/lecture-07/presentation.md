@@ -49,11 +49,11 @@ class: list, topbar-space
 ---
 template: cover
 
-## WMNWA 2210 | Web Applications
+# WMNWA 2210
 
-# React #7
+## Web App Development
 
-### Side Effects
+### React 7 | Side Effects
 
 ---
 template: section
@@ -89,7 +89,7 @@ template: chapter
 
 #### "Effectfull" Code
 
-Κάποιες ενέργειες δεν μπορούν να γίνουν το κύριο σώμα ενός _Function Component_, αυτό που αναφέρεται και ως _render phase_.
+Κάποιες ενέργειες δεν μπορούν να γίνουν στο κύριο σώμα ενός _Function Component_, αυτό που αναφέρεται και ως _render phase_.
 
 Τέτοιες ενέργειες, συνήθως, έχουν να κάνουν με:
 
@@ -334,7 +334,7 @@ class: extra-long-code
 ```jsx
 import { useEffect, useState } from 'react';
 
-function useFetch(uri) {              // Custom hook
+function useFetch(uri) {                  // Custom hook
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -345,8 +345,9 @@ function useFetch(uri) {              // Custom hook
 
     fetch(uri)
       .then((response) => response.json())
-      .then((json) => { setData(json); setLoading(false); })
-      .catch((err) => { setError(err); setLoading(false); });
+      .then((json) => { setData(json); }) // .then(setData)
+      .catch((err) => { setError(err); }) // .then(setError)
+      .finally(() => setLoading(false););
   }, [uri]);
 
   return { data, loading, error };
@@ -417,6 +418,7 @@ template: list
 - ![](https://www.google.com/s2/favicons?domain=betterprogramming.pub) How to Use the React Hook useDeepEffect | by Marco Antonio Ghiani | Better Programming https://betterprogramming.pub/how-to-use-the-react-hook-usedeepeffect-815818c0ad9d
 - ![](https://www.google.com/s2/favicons?domain=usehooks.com) useLocalStorage React Hook - useHooks https://usehooks.com/useLocalStorage/
 - ![](https://www.google.com/s2/favicons?domain=github.com) donavon/use-persisted-state: A custom React Hook that provides a multi-instance, multi-tab/browser shared and persistent state. https://github.com/donavon/use-persisted-state
+- ![](https://www.google.com/s2/favicons?domain=dev.to) React 18 useEffect Double Call for APIs: Emergency Fix - DEV Community 👩‍💻👨‍💻 https://dev.to/jherr/react-18-useeffect-double-call-for-apis-emergency-fix-27ee
 - ![](https://www.google.com/s2/favicons?domain=react-query.tanstack.com) React Query - Hooks for fetching, caching and updating asynchronous data in React https://react-query.tanstack.com/
 
 ---
