@@ -6,6 +6,7 @@
   "author": "Nicholaos Bilalis <n.bilalis@sae.edu>",
   "license": "MIT",
   "devDependencies": {
+    "prettier": "^2.7.1",
     "serve": "^14.0.1"
   }
 }
