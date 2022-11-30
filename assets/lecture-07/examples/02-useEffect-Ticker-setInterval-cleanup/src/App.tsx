@@ -1,11 +1,7 @@
-import Ticker from './components/Ticker';
+import ClickCounter from './components/ClickCounter';
 
-import './App.scss';
-
-const App = () => (
-  <>
-    <Ticker />
-  </>
-);
+function App() {
+  return <ClickCounter />;
+}
 
 export default App;

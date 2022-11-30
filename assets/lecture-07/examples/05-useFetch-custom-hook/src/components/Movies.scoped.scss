@@ -1,3 +1,31 @@
-.pages {
-  padding-bottom: 1em;
+.movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(200px + 2em), min-content));
+  grid-gap: 1rem;
+  justify-content: space-between;
+  margin: 1em;
+}
+
+.movie {
+  width: min-content;
+
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  box-shadow: 0 0 0.25em #ccc;
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+}
+
+.loading,
+.no-data,
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }

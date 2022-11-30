@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 
-function useFetch<T>(uri: string) {
-  const [data, setData] = useState<T | null>(null);
+function useFetch<T>(
+  uri: string,
+  initialValue: T | null = null,
+  resolver: (data: any) => T = (data) => data as T
+) {
+  const [data, setData] = useState(initialValue);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -9,23 +13,33 @@ function useFetch<T>(uri: string) {
     setLoading(true);
     setError(null);
 
-    fetch(uri)
+    const controller = new AbortController();
+
+    fetch(uri, { signal: controller.signal })
       .then((response) => response.json())
       .then((json: T) => {
-        setData(json);
-        setLoading(false);
+        const result = resolver(json);
+        if (result === undefined) {
+          throw new Error('Resolver returned undefined.');
+        }
+        setData(result);
       })
       .catch((err) => {
-        setError(err);
+        console.warn({ err });
+        if (!controller.signal.aborted) {
+          setError(err.message);
+        }
+      })
+      .finally(() => {
         setLoading(false);
       });
+
+    return () => {
+      controller.abort();
+    };
   }, [uri]);
 
-  return {
-    data,
-    loading,
-    error,
-  };
+  return { data, loading, error };
 }
 
 export default useFetch;
