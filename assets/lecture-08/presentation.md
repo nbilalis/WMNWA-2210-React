@@ -49,11 +49,11 @@ class: list, topbar-space
 ---
 template: cover
 
-## WMNWA 2210 | Web Applications
+# WMNWA 2210
 
-# React #8
+## Web App Development
 
-### Routes
+### React 8 | Routes
 
 ---
 template: section
@@ -584,7 +584,7 @@ const App = () => (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
-      <Route path="/products" >
+      <Route path="/products">
         <Route index element={<List />} />
         <Route path=":id" element={<Details />} />
       </Route>
@@ -748,6 +748,7 @@ template: list
 - ![favicon](https://www.google.com/s2/favicons?domain=enlear.academy) What’s New in React Router 6?. A Quick Overview of React Router v6 | by Piumi Liyana Gunawardhana | Nov, 2021 | Enlear Academy https://enlear.academy/whats-new-in-react-router-6-e34e451e5285
 - ![favicon](https://www.google.com/s2/favicons?domain=www.youtube.com) React Router 6 - What Changed & Upgrading Guide - YouTube https://www.youtube.com/watch?v=zEQiNFAwDGo
 - ![favicon](https://www.google.com/s2/favicons?domain=medium.com) Amazing New Features In React & React Router v6 | by rishav ghosh | Age of Awareness | Medium https://medium.com/age-of-awareness/amazing-new-stuff-in-react-router-v6-895ba3fab6af
+- ![favicon](https://www.google.com/s2/favicons?domain=www.robinwieruch.de) React Router 6: Nested Routes https://www.robinwieruch.de/react-router-nested-routes/
 - ![favicon](https://www.google.com/s2/favicons?domain=reactjs.org) Code-Splitting – React https://reactjs.org/docs/code-splitting.html
 
 ---
