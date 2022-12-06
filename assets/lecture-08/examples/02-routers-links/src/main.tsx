@@ -1,19 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
-// import { MemoryRouter as Router } from 'react-router-dom';
-// import { HashRouter as Router } from 'react-router-dom';
-
-import App from './App';
 
 import 'modern-normalize';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Router basename="/">
+import App from './App';
+
+createRoot(document.getElementById('app') as HTMLElement).render(
+  <StrictMode>
+    <Router>
       <App />
     </Router>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </StrictMode>
 );

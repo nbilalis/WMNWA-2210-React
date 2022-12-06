@@ -1,28 +1,33 @@
 import { Route, Routes } from 'react-router-dom';
 
-import Home from './views/Home';
 import About from './views/About';
-
-import Menu from './components/Menu';
+import Home from './views/Home';
+import Details from './views/pokemon/Details';
 import Index from './views/pokemon/Index';
 import List from './views/pokemon/List';
-import Details from './views/pokemon/Details';
+
+import Header from './components/Header';
 
 import './App.scss';
 
-const App = () => (
-  <>
-    <h1>This site is made with React and ♥</h1>
-    <Menu />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/pokemon" element={<Index />}>
-        <Route index element={<List />} />
-        <Route path=":id" element={<Details />} />
-      </Route>
-    </Routes>
-  </>
-);
+function App() {
+  return (
+    <>
+      <header>
+        <Header />
+      </header>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/pokemon" element={<Index />}>
+            <Route index element={<List />} />
+            <Route path=":name" element={<Details />} />
+          </Route>
+        </Routes>
+      </main>
+    </>
+  );
+}
 
 export default App;

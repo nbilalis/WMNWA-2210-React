@@ -1,5 +1,9 @@
 body {
-  background-color: #282c34;
-  color: whitesmoke;
+  background-color: $main-background-color;
+  color: $main-accent-color;
   text-align: center;
+}
+
+h2 {
+  margin-top: 2em;
 }

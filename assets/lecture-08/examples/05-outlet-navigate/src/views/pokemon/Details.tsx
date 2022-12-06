@@ -1,59 +1,60 @@
 import { useEffect, useState } from 'react';
-
 import { useNavigate, useParams } from 'react-router-dom';
 
 import './Details.scoped.scss';
 
-interface Form {
-  name: string;
-  url: string;
-}
-
 interface Pokemon {
   id: number;
   name: string;
-  forms: Form[];
+  forms: { name: string; url: string }[];
 }
 
 function Details() {
-  const { id } = useParams();
+  const { name } = useParams();
 
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
-  const [image, setImage] = useState<string | null>(null);
 
   const navigate = useNavigate();
 
+  const wait = (ms: number) =>
+    new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+
   useEffect(() => {
     (async () => {
-      const res1 = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+      await wait(500);
+
+      const res1 = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
       const data1 = await res1.json();
 
-      const res2 = await fetch(data1.forms[0].url);
-      const data2 = await res2.json();
-
       setPokemon(data1);
-      setImage(data2.sprites.front_default);
     })();
-  }, [id]);
+  }, [name]);
 
-  if (!pokemon || !image) {
-    return <div>Loading...</div>;
-  }
+  if (!pokemon) return <h2>Loading...</h2>;
+
+  const paddedId = `000${pokemon.id}`.slice(-3);
 
   return (
-    <div>
-      <div className="pokemon-card">
-        <img src={image} alt={pokemon.name} /> {pokemon.name}
-      </div>
+    <>
+      <h2>Name: {pokemon.name}</h2>
+      <img
+        src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${paddedId}.png`}
+        alt={pokemon.name}
+        width="400"
+      />
       <button
         type="button"
         onClick={() => {
+          // navigate('/pokemon');
           navigate(-1);
         }}
       >
-        « Return
+        ≪ Back
       </button>
-    </div>
+    </>
   );
 }
+
 export default Details;

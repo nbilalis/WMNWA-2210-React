@@ -7,12 +7,12 @@ ul {
 }
 
 a {
-  border: 1px solid whitesmoke;
+  text-decoration: none;
   margin: 0 1em;
   padding: 1em;
-  color: whitesmoke;
+  color: $main-accent-color;
 
   &.active {
-    border-color: red;
+    border-bottom: 1px solid $main-accent-color;
   }
 }

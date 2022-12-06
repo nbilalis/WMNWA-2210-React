@@ -9,24 +9,23 @@ const items = [
 
 function Menu() {
   return (
-    <ul>
-      {items.map((item) => (
-        <li>
-          <NavLink
-            className={({ isActive }) =>
-              `menu-item ${isActive ? 'active' : ''}`
-            }
-            style={({ isActive }) => ({
-              backgroundColor: isActive ? 'blue' : 'darkblue',
-              textDecoration: isActive ? 'underline' : 'none',
-            })}
-            to={item.route}
-          >
-            {item.title}
-          </NavLink>
-        </li>
-      ))}
-    </ul>
+    <nav>
+      <ul>
+        {items.map((item) => (
+          <li>
+            <NavLink
+              className={({ isActive }) => `menu-item ${isActive ? 'active' : ''}`}
+              style={({ isActive }) => ({
+                backgroundColor: isActive ? '#343a46' : '#23272f',
+              })}
+              to={item.route}
+            >
+              {item.title}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }
 

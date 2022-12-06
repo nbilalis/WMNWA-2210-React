@@ -10,24 +10,20 @@ const items = [
 
 function Menu() {
   return (
-    <ul>
-      {items.map((item) => (
-        <li key={item.route}>
-          <NavLink
-            className={({ isActive }) =>
-              `menu-item ${isActive ? 'active' : ''}`
-            }
-            style={({ isActive }) => ({
-              backgroundColor: isActive ? 'blue' : 'darkblue',
-              textDecoration: isActive ? 'underline' : 'none',
-            })}
-            to={item.route}
-          >
-            {item.title}
-          </NavLink>
-        </li>
-      ))}
-    </ul>
+    <nav>
+      <ul>
+        {items.map((item) => (
+          <li>
+            <NavLink
+              className={({ isActive }) => `menu-item ${isActive ? 'active' : ''}`}
+              to={item.route}
+            >
+              {item.title}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }
 

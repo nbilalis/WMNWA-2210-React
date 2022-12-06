@@ -7,8 +7,9 @@ ul {
 }
 
 a {
-  border: 1px solid whitesmoke;
+  border-bottom: 1px solid $main-accent-color;
+  text-decoration: none;
+  color: $main-accent-color;
   margin: 0 1em;
   padding: 1em;
-  color: whitesmoke;
 }

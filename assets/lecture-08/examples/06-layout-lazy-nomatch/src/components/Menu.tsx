@@ -2,23 +2,23 @@ import { NavLink } from 'react-router-dom';
 
 import './Menu.scoped.scss';
 
-function Menu() {
-  const routes = { '/': 'Home', '/about': 'About', '/products': 'Products' };
+const items = [
+  { route: '/', title: 'Home' },
+  { route: '/pokemon', title: 'Pokemon' },
+  { route: '/about', title: 'About' },
+];
 
+function Menu() {
   return (
     <nav>
       <ul>
-        {Object.entries(routes).map(([key, value]) => (
-          <li key={key}>
+        {items.map((item) => (
+          <li>
             <NavLink
-              to={key}
-              style={({ isActive }) => {
-                return {
-                  color: isActive ? 'white' : '',
-                };
-              }}
+              className={({ isActive }) => `menu-item ${isActive ? 'active' : ''}`}
+              to={item.route}
             >
-              {value}
+              {item.title}
             </NavLink>
           </li>
         ))}

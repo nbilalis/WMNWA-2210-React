@@ -1,25 +1,19 @@
 ul {
   display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  list-style-type: none;
   justify-content: center;
-}
-
-li {
-  padding: 0 0.5em;
-
-  &:not(:first-child) {
-    border-left: 1px solid var(--main-color);
-  }
+  margin: 2em 0;
+  padding: 0;
 }
 
 a {
-  color: var(--main-color);
   text-decoration: none;
+  margin: 0 1em;
+  padding: 1em;
+  color: $main-accent-color;
+  font-weight: bold;
 
-  &:hover {
-    color: var(--accent-color);
-    text-decoration: underline;
+  &.active {
+    border-bottom: 1px solid $main-accent-color;
   }
 }

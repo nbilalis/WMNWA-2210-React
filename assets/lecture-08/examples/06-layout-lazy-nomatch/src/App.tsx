@@ -1,42 +1,34 @@
-import { lazy, Suspense } from 'react';
+import { Suspense, lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-import { Routes, Route } from 'react-router-dom';
+import Layout from './views/Layout';
 
-import Layout from './components/Layout';
-
-import ProductList from './views/Products/List';
-import ProductDetails from './views/Products/Details';
-import NoMatch from './views/NoMatch';
+import './App.scss';
 
 const Home = lazy(() => import('./views/Home'));
 const About = lazy(() => import('./views/About'));
+const NoMatch = lazy(() => import('./views/NoMatch'));
 
-const App = () => (
-  <Routes>
-    <Route path="/" element={<Layout />}>
-      <Route
-        index
-        element={
-          <Suspense fallback={<>...</>}>
-            <Home />
-          </Suspense>
-        }
-      />
-      <Route
-        path="about"
-        element={
-          <Suspense fallback={<>...</>}>
-            <About />
-          </Suspense>
-        }
-      />
-      <Route path="/products/">
-        <Route index element={<ProductList />} />
-        <Route path=":id" element={<ProductDetails />} />
-      </Route>
-      <Route path="*" element={<NoMatch />} />
-    </Route>
-  </Routes>
-);
+const Index = lazy(() => import('./views/pokemon/Index'));
+const Details = lazy(() => import('./views/pokemon/Details'));
+const List = lazy(() => import('./views/pokemon/List'));
+
+function App() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/pokemon" element={<Index />}>
+            <Route index element={<List />} />
+            <Route path=":name" element={<Details />} />
+          </Route>
+          <Route path="*" element={<NoMatch />} />
+        </Route>
+      </Routes>
+    </Suspense>
+  );
+}
 
 export default App;
