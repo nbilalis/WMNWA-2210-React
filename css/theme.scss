@@ -1,12 +1,13 @@
 $accent-color: #743bbc;
+$horizontal-margin: 30px;
 
 .remark-slide {
   color: white;
-  font-family: "Century Gothic";
+  font-family: "Century Gothic", Arial, Helvetica, sans-serif;
 
   .remark-slide-content {
     font-size: 24px;
-    padding: 1em 2em;
+    padding: 1em $horizontal-margin;
   }
 
   h1 {
@@ -95,13 +96,8 @@ $accent-color: #743bbc;
     margin-right: auto;
   }
 
-  h3 + p img {
-    height: 25vw;
-  }
-
   $topbar-height: 100px;
-  $logo-height: 60px;
-  $horizontal-margin: 40px;
+  $logo-height: 50px;
 
   .common {
     $start-color: #262626;
@@ -120,14 +116,30 @@ $accent-color: #743bbc;
     .logo-sae,
     .logo-web {
       img {
-        height: $logo-height;
         max-width: initial;
         margin: initial;
       }
 
       position: absolute;
-      top: ($topbar-height - $logo-height) / 2;
       z-index: 999;
+    }
+
+    .logo-sae {
+      $height: $logo-height - 10px;
+      img {
+        height: $height;
+      }
+
+      top: ($topbar-height - $height) / 2;
+    }
+
+    .logo-web {
+      $height: $logo-height + 10px;
+      img {
+        height: $height;
+      }
+
+      top: ($topbar-height - $height) / 2;
     }
 
     .logo-sae {
@@ -152,8 +164,8 @@ $accent-color: #743bbc;
       bottom: 40px;
       z-index: 997;
 
-      $foo: 3%;
-      $bar: 13.6%;
+      $foo: 2.5%;
+      $bar: 13.8%;
       &.one {
         color: #49b1b8;
         left: $foo;
@@ -350,8 +362,8 @@ $accent-color: #743bbc;
     > p {
       img {
         display: block;
-        max-width: 50rem;
-        margin: 2rem auto;
+        max-width: 90%;
+        margin: 0 auto;
       }
     }
 
@@ -379,6 +391,7 @@ $accent-color: #743bbc;
         margin-top: 0;
         margin-bottom: 1em;
         font-size: 0.8em;
+        white-space: nowrap;
         overflow-x: hidden;
         text-overflow: ellipsis;
       }
@@ -497,6 +510,18 @@ $accent-color: #743bbc;
 
   .extra-long-code .remark-code {
     font-size: 0.6em;
+  }
+
+  .six-elevenths-picture {
+    img {
+      max-height: 19rem;
+    }
+  }
+
+  .extra-big-picture {
+    img {
+      max-height: 20em;
+    }
   }
 
   .hide-table-head {
