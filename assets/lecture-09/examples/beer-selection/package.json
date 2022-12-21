@@ -1,0 +1,21 @@
+{
+  "name": "beer-la",
+  "version": "1.0.0",
+  "description": "A site dedicated to beers",
+  "main": "index.js",
+  "author": "Nikos Bilalis",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "server": "yarn workspace server dev",
+    "client": "yarn workspace client dev",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

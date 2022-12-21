@@ -1,6 +1,0 @@
-.env
-.prettierrc
-yarn.lock
-
-.vscode
-node_modules

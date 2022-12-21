@@ -1,0 +1,40 @@
+div.card {
+  display: flex;
+  gap: 0.5em;
+  flex-direction: column;
+  height: 100%;
+  padding: 0.5em;
+  border: 1px solid var(--main-accent-color);
+  box-shadow: 0 4px 8px 0 #999;
+  border-radius: 2%;
+
+  transition: all 0.2s ease-in-out;
+
+  h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+
+  div {
+    &.description {
+      font-size: 0.9em;
+      flex-grow: 1;
+      margin-bottom: 0.5em;
+    }
+
+    &.abv,
+    &.ibu,
+    &.temp {
+      font-size: 0.8em;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+
+  &:hover {
+    transform: scale(1.025);
+    box-shadow: 0 5px 5px -3px #999, 0 8px 10px 1px #999, 0 3px 14px 2px #999;
+  }
+}

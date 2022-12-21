@@ -1,9 +1,0 @@
-.editorconfig
-.eslintignore
-.eslintrc.json
-.prettierrc
-yarn.lock
-
-.vscode
-node_modules
-RELEASE.md
