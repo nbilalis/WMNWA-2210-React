@@ -3,19 +3,17 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
-const initialState = 0;
-
 interface HelloProps {
   name: string;
+  initialValue?: number;
 }
 
-function Hello({ name }: HelloProps) {
-  const [counter, setCounter] = useState(initialState);
+function Hello({ name, initialValue = 0 }: HelloProps) {
+  const [counter, setCounter] = useState(0);
 
   return (
     <>
       <h1>Hello, {name}!</h1>
-      <p>From your React app!</p>
       <p>Clicked {counter} times</p>
       <Box
         sx={{
@@ -31,7 +29,7 @@ function Hello({ name }: HelloProps) {
           type="button"
           variant="contained"
           onClick={() => {
-            setCounter((counter) => counter + 1);
+            setCounter((c) => c + 1);
           }}
         >
           Increase
@@ -40,7 +38,7 @@ function Hello({ name }: HelloProps) {
           type="button"
           variant="outlined"
           onClick={() => {
-            setCounter((counter) => counter - 1);
+            setCounter((c) => c - 1);
           }}
         >
           Decrease
@@ -49,7 +47,7 @@ function Hello({ name }: HelloProps) {
           type="button"
           variant="text"
           onClick={() => {
-            setCounter(initialState);
+            setCounter(initialValue);
           }}
         >
           Reset

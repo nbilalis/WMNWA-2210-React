@@ -2,6 +2,8 @@ import Hello from './components/Hello';
 
 import './App.scss';
 
-const App = () => <Hello name="World" />;
+function App() {
+  return <Hello name="World" />;
+}
 
 export default App;

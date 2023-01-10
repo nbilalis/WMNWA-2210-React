@@ -3,24 +3,48 @@ import { useState } from 'react';
 import { css } from '@emotion/css';
 import styled from '@emotion/styled';
 
-const initialValue = 0;
-
 const mainColor = 'hotpink';
 const accentColor = 'whitesmoke';
 const depth = 5;
 const depress = 2;
 
+interface ViewContainerProps {
+  width: string;
+}
+
 // Arrow function that returns JSON object
-const Container = styled.div((props) => ({
+const ViewContainer = styled('div')<ViewContainerProps>(
+  {
+    color: 'whitesmoke',
+    background: '#242830',
+    height: '100vh',
+    textAlign: 'center',
+    padding: '1em',
+  },
+  (props) => ({
+    width: props.width,
+  })
+);
+
+/* interface ButtonContainerProps {
+  column: boolean;
+} */
+
+const ButtonContainer = styled.div((props) => ({
   display: 'flex',
   flexDirection: props.column && 'column',
   gap: '.5em',
   justifyContent: 'center',
   alignItems: 'center',
+  padding: '1em',
 }));
 
+interface ButtonProps {
+  primary?: boolean;
+}
+
 // Tagged template string
-const Button = styled.button`
+const Button = styled.button<ButtonProps>`
   color: ${(props) => (props.primary ? mainColor : accentColor)};
   background-color: ${(props) => (props.primary ? accentColor : mainColor)};
   padding: 0.25em 1em;
@@ -42,15 +66,19 @@ const Button = styled.button`
   }
 `;
 
-function Hello({ name }) {
-  const [counter, setCounter] = useState(initialValue);
-  return (
-    <>
-      <h1>Hello, {name}!</h1>
+interface HelloProps {
+  name: string;
+  initialValue?: number;
+}
 
-      <p>From your React app!</p>
+function Hello({ name, initialValue = 0 }: HelloProps) {
+  const [counter, setCounter] = useState(initialValue);
+
+  return (
+    <ViewContainer width="100vw">
+      <h1>Hello, {name}!</h1>
       <p>Clicked {counter} times</p>
-      <Container>
+      <ButtonContainer>
         <Button
           onClick={() => {
             setCounter((c) => c + 1);
@@ -84,8 +112,8 @@ function Hello({ name }) {
         >
           Reset
         </button>
-      </Container>
-    </>
+      </ButtonContainer>
+    </ViewContainer>
   );
 }
 

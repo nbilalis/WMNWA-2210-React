@@ -1,16 +1,15 @@
 import { useState } from 'react';
 
-import Button from './Button';
-import Link from './Link';
-
 import styled from 'styled-components';
 
-interface HelloProps {
-  name: string;
-}
+import Button from './Button';
+import Text from './Text';
 
 const Wrapper = styled.section`
   padding: 1em;
+  text-align: center;
+  height: 100vh;
+  color: whitesmoke;
   background: #242830;
 `;
 
@@ -25,53 +24,50 @@ const TomatoButton = styled(Button)`
   border-color: tomato;
 `;
 
-const StyledLink = styled(Link)`
+const StyledText = styled(Text)`
   color: palevioletred;
   font-weight: bold;
 `;
 
-function Hello({ name }: HelloProps) {
-  const [counter, setCounter] = useState(0);
+interface HelloProps {
+  name: string;
+  initialValue?: number;
+}
+
+function Hello({ name, initialValue = 0 }: HelloProps) {
+  const [counter, setCounter] = useState(initialValue);
 
   return (
-    <>
-      <Wrapper>
-        <Title>Hello, {name}!</Title>
-        <p>From your React app!</p>
-      </Wrapper>
-
+    <Wrapper>
+      <Title>Hello, {name}!</Title>
       <p>Clicked {counter} times</p>
       <p>
         <Button
-          primary
+          primary={counter % 2 === 0}
           onClick={() => {
-            setCounter((counter) => counter + 1);
+            setCounter((c) => c + 1);
           }}
         >
           Increase
         </Button>
         <Button
           onClick={() => {
-            setCounter((counter) => counter - 1);
+            setCounter((c) => c - 1);
           }}
         >
           Decrease
         </Button>
         <TomatoButton
           onClick={() => {
-            setCounter(0);
+            setCounter(initialValue);
           }}
         >
           Reset
         </TomatoButton>
       </p>
-      <p>
-        <Link>Unstyled, boring Link</Link>
-      </p>
-      <p>
-        <StyledLink>Styled, exciting Link</StyledLink>
-      </p>
-    </>
+      <Text>Unstyled, boring Link</Text>
+      <StyledText>Styled, exciting Link</StyledText>
+    </Wrapper>
   );
 }
 

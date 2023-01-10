@@ -4,6 +4,7 @@ export const [themeClass, vars] = createTheme({
   color: {
     brand: 'hotpink',
     accent: 'whitesmoke',
+    background: '#242830',
   },
   font: {
     body: 'Roboto, sans-serif',
@@ -17,6 +18,15 @@ export const [themeClass, vars] = createTheme({
 const base = style({ padding: 5 });
 
 export const container = style({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  height: '100vh',
+  color: vars.color.accent,
+  backgroundColor: vars.color.background,
+});
+
+export const buttonContainer = style({
   display: 'flex',
   justifyContent: 'center',
   gap: '.5em',

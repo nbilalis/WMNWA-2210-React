@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite';
-
-import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
+
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
+import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,9 +10,7 @@ export default defineConfig({
   base: '',
   css: {
     preprocessorOptions: {
-      scss: {
-        additionalData: `@import "./src/variables";`,
-      },
+      scss: {},
     },
   },
 });
