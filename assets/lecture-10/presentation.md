@@ -49,11 +49,11 @@ class: list, topbar-space
 ---
 template: cover
 
-## WMNWA 2210 | Web Applications
+# WMNWA 2210
 
-# React #10
+## Web App Development
 
-### Styling
+### React 10 | Styling
 
 ---
 template: section
@@ -430,11 +430,13 @@ template: list
 
 ### Extra info
 
+- ![favicon](https://www.google.com/s2/favicons?domain=fontsource.org) Fontsource | Home https://fontsource.org/docs/introduction
 - ![favicon](https://www.google.com/s2/favicons?domain=css-tricks.com) The CSS-in-React Landscape - CSS-Tricks https://css-tricks.com/the-css-in-react-landscape/
 - ![favicon](https://www.google.com/s2/favicons?domain=dmitrynozhenko) 9 Ways To Implement CSS in React JS | by Dmitry Nozhenko | Medium https://medium.com/@dmitrynozhenko/9-ways-to-implement-css-in-react-js-ccea4d543aa3
 - ![favicon](https://www.google.com/s2/favicons?domain=www.puruvj.dev) Why I moved from Styled Components to (S)CSS modules // Puru Vijay https://www.puruvj.dev/blog/move-to-css-modules-from-styled-components
 - ![favicon](https://www.google.com/s2/favicons?domain=medium.com) Styled Components: To Use or Not to Use? | by Talia Marcassa | Building CrowdRiff | Medium https://medium.com/building-crowdriff/styled-components-to-use-or-not-to-use-a6bb4a7ffc21
 - ![favicon](https://www.google.com/s2/favicons?domain=dev.to) Using emotionJs with Vite - DEV Community https://dev.to/ajitsinghkamal/using-emotionjs-with-vite-2ndj
+- ![favicon](https://www.google.com/s2/favicons?domain=blog.logrocket.com) Styled-components vs. Emotion for handling CSS - LogRocket Blog https://blog.logrocket.com/styled-components-vs-emotion-for-handling-css/
 - ![favicon](https://www.google.com/s2/favicons?domain=vanilla-extract.style) Getting Started — vanilla-extract https://vanilla-extract.style/documentation/
 - ![favicon](https://www.google.com/s2/favicons?domain=developer.mozilla.org) Template literals (Template strings) - JavaScript | MDN https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 - ![](https://www.google.com/s2/favicons?domain=wesbos.com) Tagged Template Literals - Wes Bos https://wesbos.com/tagged-template-literals
