@@ -49,11 +49,11 @@ class: list, topbar-space
 ---
 template: cover
 
-## WMNWA 2210 | Web Applications
+# WMNWA 2210
 
-# React #11
+## Web App Development
 
-### (Rest of) Top-Level API
+### React 11 | (Other elements of) Top-Level API
 
 ---
 template: section
@@ -109,7 +109,7 @@ template: chapter
 ### Components
 
 ---
-class: extra-long-text, long-code
+class: extra-long-text, code
 
 #### `React.memo`
 
@@ -327,8 +327,9 @@ template: list
 - ![favicon](https://www.google.com/s2/favicons?domain=reactjs.org) Reconciliation – React https://reactjs.org/docs/reconciliation.html
 - ![favicon](https://www.google.com/s2/favicons?domain=jvcjunior) Reference Identity in Javascript — React/Performance | by Valter Júnior | Medium https://medium.com/@jvcjunior/reference-identity-in-javascript-react-performance-12a8354addad
 - ![favicon](https://www.google.com/s2/favicons?domain=thoughtbot.com) A React Rendering Misconception https://thoughtbot.com/blog/react-rendering-misconception
-- ![favicon](https://www.google.com/s2/favicons?domain=kentcdodds.com) One simple trick to optimize React re-renders https://kentcdodds.com/blog/optimize-react-re-renders
 - ![favicon](https://www.google.com/s2/favicons?domain=dmitripavlutin.com) How to Memoize with React.useMemo() https://dmitripavlutin.com/react-usememo-hook/
+- ![favicon](https://www.google.com/s2/favicons?domain=kentcdodds.com) One simple trick to optimize React re-renders https://kentcdodds.com/blog/optimize-react-re-renders
+- ![favicon](https://www.google.com/s2/favicons?domain=overreacted.io) Before You memo() — Overreacted https://overreacted.io/before-you-memo/
 
 ---
 template: section
