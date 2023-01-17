@@ -1,0 +1,7 @@
+* {
+  transition: border 1s ease-in-out;
+}
+
+.flash-border {
+  border: 1px solid $main-accent-color;
+}
