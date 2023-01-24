@@ -1,0 +1,14 @@
+{
+  "translation": {
+    "titles": {
+      "home": "Inicio",
+      "about": "Acerca de"
+    },
+    "welcome": "Bienvenido a tu aplicación React!",
+    "counter": "Contador",
+    "clickMe": "Haz click",
+    "price": "Precio: {{ val, currency(EUR) }}",
+    "date": "Fecha: {{ val, datetime }}",
+    "starting-point": "Este es un punto de partida con opiniones, para que empieces con React."
+  }
+}
